@@ -1,0 +1,128 @@
+.helptext {
+  font-size: 12px !important;
+  color: #999;
+  display: block;
+  margin-left: 145px;
+}
+#form_usuario label {
+	width: 140px;
+	display: inline-block;
+}
+#form_usuario input {
+	margin-bottom: 1px;
+}
+#logo{
+	width: 400px;
+	margin: 0 auto;
+}
+#welcome {
+	width: 800px;
+	margin: 0 auto;
+}
+#welcome-text {
+	text-align: center;
+}
+ul {
+	list-style-type: none;
+}
+.errorlist{
+		width: 350px;
+		padding: 5px;
+		margin-bottom: 5px;
+}
+.sort_placeholder {height: 15px; border: grey 3px solid;}
+.list_placeholder { font-weight: bolder; }
+.list {width: 130px; border: #000 2px solid; margin: 5px; float: left;}
+.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+.sort_slides li:hover {
+    cursor: pointer;
+}
+.sort_slides li {
+    margin: 0px 5px 5px;
+    padding: 5px;
+    border: 1px solid #D3D3D3;
+    background: #EFF5F5;
+}
+.invisible-li {
+    visibility: hidden;
+}
+th {
+    text-align: center;
+}
+.row-kanban {
+    height: 200px;
+}
+.us-kanban {
+    height: 51;
+    width: 133px;
+    border: solid rgb(48, 65, 74) 2px;
+    border-radius: 5px;
+    margin: 0 0 1px 0;
+}
+.us-kanban:hover
+{
+    height: 53px;
+    border: solid rgb(48, 65, 74) 3px;
+    cursor: pointer;
+
+}
+#opciones:hover {
+    opacity: 1.0;
+}
+#opciones {
+    opacity: 0.5;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+    padding: 0.5px;
+    margin: 0px;
+}
+.btn-sm {
+    padding: 5px;
+}
+#form-revertir {
+    display: inline-block;
+}
+//.list-group {
+    //display: inline;
+
+//}
+
+//#button-burn {
+    //float: left;
+    //clear: both;
+//}
+
+#sprint-activo:hover {
+    cursor: pointer;
+    background-color: #5cb85c;
+}
+#sprint-finalizado:hover {
+    cursor: pointer;
+    background-color: #d9534f;
+}
+#td-burn {
+    padding: 0;
+}
+#t-restante {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    color: #000;
+    //font-size: 22px;
+    height: 50px;
+    width: 200px;
+    float: left;
+    position: relative;
+    margin-top: 50px;
+    display: inline;
+    vertical-align:bottom;
+}
+#myfirstchart {
+    //display: inline-block;
+    //width: 900px;
+}
