@@ -43,7 +43,37 @@
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav nav-pills nav-stacked side-nav">
 
+                    {% if perms.usuarios %}
+                    <li>
+                        <a href="{% url 'usuarios:index' %}"><i class="fa fa-lg fa-user"></i> Usuarios</a>
+                    </li>
+                    {% endif %}
+                    {% if perms.auth.add_group or perms.auth.change_group or perms.auth.delete_group or perms.roles_proyecto %}
+                    <li>
+                        <a aria-expanded="true" class="" href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-lg fa-arrows-v"></i> Roles <i class="fa fa-lg fa-caret-down"></i></a>
+                        <ul style="" aria-expanded="true" id="demo" class="collapse in">
+                            {% if perms.auth.add_group or perms.auth.change_group or perms.auth.delete_group %}
+                            <li>
+                                <a href="{% url 'roles:index' %}"><i class="fa fa-lg fa-group"></i> Roles de Sistema</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    {% endif %}
+                    {% if perms.odontologos %}
+                    <li>
+                        <a href="{% url 'odontologos:index' %}"><i class="fa fa-lg fa-user"></i> Odontologos</a>
+                    </li>
+                    {% endif %}
+                </li>
+
+
+
+                </ul>
+            </div>
             <!-- /.navbar-collapse -->
         </nav>
 

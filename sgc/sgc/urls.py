@@ -34,6 +34,9 @@ urlpatterns = patterns('',
     url(r'^perfil/$', 'sgc.views.user_profile', name='user_profile'),
     url(r'^perfil/password_change/$', 'sgc.views.perfil_change_password',
                            name='profile_password_change'),
+    url(r'^usuarios/', include('apps.usuarios.urls', namespace="usuarios")),
+    url(r'^roles/', include('apps.roles.urls', namespace="roles")),
+    url(r'^odontologos/', include('apps.odontologos.urls', namespace="odontologos")),
 
     )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -13,7 +13,7 @@
 <body>
 
 	<div class="container">
-
+    <div class="col-sm-17">
       <form class="form-signin" action="{% url 'login' %}" method="post">
       	{% csrf_token %}
         <h2 class="form-signin-heading">Ingreso al Sistema</h2>
@@ -36,7 +36,7 @@
             <div><a href="{% url 'reset' %}"><i class="fa fa-fw fa-lock"></i>Olvide mi contraseña</a></div>
         </div>
       </form>
-
+    </div>
     </div>
 
 

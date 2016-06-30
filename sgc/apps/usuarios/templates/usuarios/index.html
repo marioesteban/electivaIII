@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% block content %}
+
+	<!-- Page Heading -->
+	    <div class="row">
+	        <div class="col-lg-12">
+	            <h1 class="page-header">
+	                Usuarios <small>Administración</small>
+	            </h1>
+	        </div>
+	    </div>
+	<!-- /.row -->
+    {% if perms.usuarios.crear_usuario %}
+	<a type="button" class="btn btn-success pull-right" href="{% url 'usuarios:create' %}" >
+	<i class="fa fa-lg fa-user-plus"></i>
+		Nuevo Usuario
+	</a>
+    {% endif %}
+
+{% if perms.usuarios.listar_usuario %}
+<!-- Page Heading -->
+	    <div class="row">
+	        <div class="col-lg-12">
+	            <h4 class="page-header">
+	                Activos
+	            </h4>
+	        </div>
+	    </div>
+	<!-- /.row -->
+
+	<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>User Name</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Email</th>
+			<th>Teléfono</th>
+			<th>Dirección</th>
+			<th>Editar</th>
+            <th>Roles</th>
+			<th>Inactivar</th>
+
+		</tr>
+	</thead>
+	<tbody>
+
+		{% for usuario in  user_list %}
+			{% if usuario.is_active %}
+				<tr>
+					<td>{{usuario}}</td>
+					<td>{{usuario.first_name}}</td>
+
+					<td>{{usuario.last_name}}</td>
+
+					<td>{{usuario.email}}</td>
+
+					<td>{{usuario.usuario.telefono}}</td>
+
+					<td>{{usuario.usuario.direccion}}</td>
+
+					{% if usuario.is_staff %}
+						<td></td>
+						<td></td>
+                        <td></td>
+					{% else %}
+
+                        {% if perms.usuarios.modificar_usuario %}
+                        <td>
+                            <a type="button" class="btn btn-primary" href="{% url 'usuarios:update' usuario.id %}">
+                            <i class="fa fa-lg fa-edit"></i>
+                            </a>
+                        </td>
+
+                        <td>
+							<a type="button" class="btn btn-warning" href="{% url 'usuarios:detail_roles' usuario.id %}">
+							<i class="fa fa-lg fa-group"></i>
+							</a>
+						</td>
+                        {% else %}
+                        <td></td>
+                        <td></td>
+                        {% endif %}
+
+
+
+                        {% if perms.usuarios.inactivar_usuario %}
+                            {% if  usuario != user%}
+
+                            <td>
+                                <a type="button" class="btn btn-danger" href="{% url 'usuarios:delete' usuario.id %}">
+                                <i class="fa fa-lg fa-minus"></i>
+                                </a>
+                            </td>
+
+                            {% else %}
+                            <td></td>
+                            {% endif %}
+						{% else %}
+						<td></td>
+						{% endif %}
+
+					{% endif %}
+
+				</tr>
+
+			{% endif %}
+
+		{% endfor %}
+
+	</tbody>
+</table>
+
+<!-- Page Heading -->
+	    <div class="row">
+	        <div class="col-lg-12">
+	            <h4 class="page-header">
+	                Inactivos
+	            </h4>
+	        </div>
+	    </div>
+	<!-- /.row -->
+
+	<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>User Name</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Email</th>
+			<th>Teléfono</th>
+			<th>Dirección</th>
+			<th>Editar</th>
+            <th>Roles</th>
+			<th>Activar</th>
+
+		</tr>
+	</thead>
+	<tbody>
+
+		{% for usuario in  user_list %}
+			{% if not usuario.is_active %}
+				<tr>
+					<td>{{usuario}}</td>
+					<td>{{usuario.first_name}}</td>
+
+					<td>{{usuario.last_name}}</td>
+
+					<td>{{usuario.email}}</td>
+
+					<td>{{usuario.usuario.telefono}}</td>
+
+					<td>{{usuario.usuario.direccion}}</td>
+
+					{% if usuario.is_staff %}
+						<td></td>
+						<td></td>
+						<td></td>
+					{% else %}
+
+                        {% if perms.usuarios.modificar_usuario %}
+                        <td>
+                            <a type="button" class="btn btn-primary" href="{% url 'usuarios:update' usuario.id %}">
+                            <i class="fa fa-lg fa-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+							<a type="button" class="btn btn-warning" href="{% url 'usuarios:detail_roles' usuario.id %}">
+							<i class="fa fa-lg fa-group"></i>
+							</a>
+						</td>
+                        {% else %}
+                            <td></td>
+                            <td></td>
+                        {% endif %}
+
+                        {% if perms.usuarios.inactivar_usuario %}
+							{% if  usuario != user%}
+
+							<td>
+								<a type="button" class="btn btn-success" href="{% url 'usuarios:activate' usuario.id %}">
+								<i class="fa fa-lg fa-minus"></i>
+								</a>
+							</td>
+
+							{% else %}
+							<td></td>
+							{% endif %}
+						{% else %}
+						<td></td>
+						{% endif %}
+
+					{% endif %}
+
+				</tr>
+
+			{% endif %}
+
+		{% endfor %}
+
+	</tbody>
+</table>
+{% endif %}
+
+{% endblock %}
